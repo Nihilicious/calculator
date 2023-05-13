@@ -6,13 +6,56 @@ let num2 = '';
 let operand = '';
 let res = '';
 
-
+function calculate(num1, operand, num2){
+    if(operand === '*'){
+            res = num1 * num2;
+        }else if(operand === '/'){
+            res = num1 / num2;
+        }else if(operand === '+'){
+            res = num1*1 + num2*1;
+        }else if(operand === '-'){
+            res = num1 - num2;
+        };
+}
 
 
 function operate(){
     let clas = this.className;
     let input = this.textContent;
-    if(clas === 'num' && !operand && !res){
+    if(clas === 'clear'){
+        num1 = '';
+        operand = '';
+        num2 = '';
+        res = '';
+        calculation.textContent = `${num1} ${operand} ${num2}`;
+        result.textContent = res;
+    }else if(clas === 'undo'){
+        if(res){
+            num1 = '';
+            operand = '';
+            num2 = '';
+            res = '';
+        }else if(num2){
+           num2 = num2.slice(0, (num2.length - 1));
+        }else if(num1 && !operand){
+            num1 = num1.slice(0, (num1.length - 1));
+        }else if(num1 && operand){
+            operand = '';
+        }
+        calculation.textContent = `${num1} ${operand} ${num2}`;
+        result.textContent = res;
+    }else if(num1 && !operand && input === '.' && num1.includes('.')){
+
+    }else if(num2 && input === '.' && num2.includes('.')){
+
+    }else if(clas === 'num' && res){
+        num1 = input;
+        operand = '';
+        num2 = '';
+        res = '';
+        calculation.textContent = `${num1} ${operand} ${num2}`;
+        result.textContent = res;
+    }else if(clas === 'num' && !operand && !res){
         num1 += input;
         calculation.textContent = `${num1} ${operand} ${num2}`;
     }else if(clas === 'num' && operand && !res){
@@ -28,16 +71,16 @@ function operate(){
         res = '';
         calculation.textContent = `${num1} ${operand} ${num2}`;
         result.textContent = res;
+    }else if(clas === 'operator' && num2 && !res){
+        calculate(num1, operand, num2);
+        num1 = res;
+        operand = input;
+        num2 = '';
+        res = '';
+        calculation.textContent = `${num1} ${operand} ${num2}`;
+        
     }else if(clas === 'equals'){
-        if(operand === '*'){
-            res = num1 * num2;
-        }else if(operand === '/'){
-            res = num1 / num2;
-        }else if(operand === '+'){
-            res = num1 + num2;
-        }else if(operand === '*-'){
-            res = num1 - num2;
-        };
+        calculate(num1, operand, num2);
         calculation.textContent = `${num1} ${operand} ${num2}`;
         result.textContent = '= ' + res;
     }

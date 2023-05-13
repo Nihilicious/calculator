@@ -32,7 +32,9 @@ body{
 }
 
 .calculation, .result{
-    font-style: sans-serif rgb(243, 131, 150);
+    flex-shrink: 1;
+    color: rgb(236, 117, 182);
+    font-style: sans-serif;
     margin: 3px;
 }
 
