@@ -5,6 +5,7 @@ body{
     align-items: center;
     justify-content: center;
     min-height: 100vh;
+    background-image: linear-gradient(to bottom right, rgb(120, 157, 168), rgb(201, 162, 202));
 }
 
 
@@ -22,9 +23,11 @@ body{
 }
 
 .screen{
+    display: flex;
+    flex-direction: column;
     font-size: 10px;
     box-sizing: border-box;
-    border-radius: 25px;
+    border-radius: 10px;
     border: 2px solid rgb(245, 157, 199);
     width: 100%;
     height: 30px;
@@ -32,10 +35,11 @@ body{
 }
 
 .calculation, .result{
-    flex-shrink: 1;
+    height: 15px;
+    padding: 0px;
     color: rgb(236, 117, 182);
     font-style: sans-serif;
-    margin: 3px;
+    margin: 0px 2px;
 }
 
 .result{
@@ -56,7 +60,7 @@ button{
     box-sizing: border-box;
     flex: 1 0 0px;
     border-radius: 10px;
-    background-image: linear-gradient(to bottom right, rgb(101, 101, 197), rgb(191, 128, 216));
+    background-image: linear-gradient(to bottom right, rgb(85, 85, 145), rgb(136, 90, 155));
     border: solid 1px pink;
     margin: 1px;
     color: pink;
@@ -64,4 +68,9 @@ button{
 
 .equals, .clear{
     flex: 4 0 0px;
+    background-image: linear-gradient(to bottom right, rgb(91, 147, 173), rgb(193, 128, 219));
+}
+
+.clear, .undo, .operator{
+    background-image: linear-gradient(to bottom right, rgb(44, 44, 134), rgb(108, 56, 129));
 }

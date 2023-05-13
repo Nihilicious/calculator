@@ -18,23 +18,29 @@ function calculate(num1, operand, num2){
         };
 }
 
+function update(num1, operand, num2, res){
+    calculation.textContent = `${num1} ${operand} ${num2}`;
+    result.textContent = res;
+}
+
 
 function operate(){
     let clas = this.className;
     let input = this.textContent;
+
     if(clas === 'clear'){
         num1 = '';
         operand = '';
         num2 = '';
         res = '';
-        calculation.textContent = `${num1} ${operand} ${num2}`;
-        result.textContent = res;
+        update(num1, operand, num2, res);
     }else if(clas === 'undo'){
         if(res){
             num1 = '';
             operand = '';
             num2 = '';
             res = '';
+            update(num1, operand, num2, res);
         }else if(num2){
            num2 = num2.slice(0, (num2.length - 1));
         }else if(num1 && !operand){
@@ -42,47 +48,41 @@ function operate(){
         }else if(num1 && operand){
             operand = '';
         }
-        calculation.textContent = `${num1} ${operand} ${num2}`;
-        result.textContent = res;
+        update(num1, operand, num2, res);
     }else if(num1 && !operand && input === '.' && num1.includes('.')){
-
     }else if(num2 && input === '.' && num2.includes('.')){
-
     }else if(clas === 'num' && res){
-        num1 = input;
+        num1 = res;
         operand = '';
         num2 = '';
         res = '';
-        calculation.textContent = `${num1} ${operand} ${num2}`;
-        result.textContent = res;
+        update(num1, operand, num2, res);
     }else if(clas === 'num' && !operand && !res){
         num1 += input;
-        calculation.textContent = `${num1} ${operand} ${num2}`;
+        update(num1, operand, num2, res);
     }else if(clas === 'num' && operand && !res){
         num2 += input;
-        calculation.textContent = `${num1} ${operand} ${num2}`;
+        update(num1, operand, num2, res);
     }else if(clas === 'operator' && num1 && !operand && !num2 && !res){
         operand = input;
-        calculation.textContent = `${num1} ${operand} ${num2}`;
+        update(num1, operand, num2, res)
     }else if(clas === 'operator' && res){
         num1 = res;
         operand = input;
         num2 = '';
         res = '';
-        calculation.textContent = `${num1} ${operand} ${num2}`;
-        result.textContent = res;
+        update(num1, operand, num2, res)
     }else if(clas === 'operator' && num2 && !res){
         calculate(num1, operand, num2);
         num1 = res;
         operand = input;
         num2 = '';
         res = '';
-        calculation.textContent = `${num1} ${operand} ${num2}`;
+        update(num1, operand, num2, res)
         
     }else if(clas === 'equals'){
         calculate(num1, operand, num2);
-        calculation.textContent = `${num1} ${operand} ${num2}`;
-        result.textContent = '= ' + res;
+        update(num1, operand, num2, res)
     }
 };
 
