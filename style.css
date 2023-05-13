@@ -1,7 +1,10 @@
+
+
 body{
     display:flex;
     align-items: center;
     justify-content: center;
+    min-height: 100vh;
 }
 
 
@@ -19,6 +22,7 @@ body{
 }
 
 .screen{
+    box-sizing: border-box;
     border-radius: 25px;
     border: 2px solid rgb(245, 157, 199);
     width: 100%;
@@ -27,25 +31,25 @@ body{
 }
 
 .keyboard{
-    display: flex;
+    width: 100px;
+    height: 100px;
+    display:flex;
+    align-items: center;
+    flex-wrap: wrap;
+    flex: none;
 }
-
-.numbers, .lasts{
-    display: flex;
-    flex-wrap: wrap-reverse;
-}
-
-.operands{
-    display: flex;
-    flex-direction: column;
-}
-
-
 
 button{
     box-sizing: border-box;
-    margin:0px;
-    border: 2px solid rgb(245, 157, 199);
-    border-radius: 50%;
+    flex: 1 0 0px;
+    border-radius: 10px;
     background-image: linear-gradient(to bottom right, rgb(101, 101, 197), rgb(191, 128, 216));
+    border: solid 1px pink;
+    margin: 1px;
+    color: pink;
+}
+
+.equals, .clear{
+    width: 47.9px;
+    flex: 4 0 0px;
 }
